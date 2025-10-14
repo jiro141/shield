@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-
+import hero from "../assets/hero-car.png"
 export default function Hero() {
   return (
     <section className="pt-32 pb-20 bg-gradient-to-br from-[#003366] via-[#004080] to-[#0F793C] text-white relative overflow-hidden">
@@ -65,7 +65,7 @@ export default function Hero() {
         >
           <div className="relative">
             <img
-              src="/src/assets/hero-car.png"
+              src={hero}
               alt="Hero Car"
               className="rounded-2xl  w-[420px] md:w-[820px]"
             />
@@ -75,11 +75,6 @@ export default function Hero() {
               transition={{ duration: 1.2 }}
               className="absolute inset-0 flex items-center justify-center"
             >
-              <img
-                src="/src/assets/shield-overlay.svg"
-                alt="shield"
-                className="w-28 md:w-36 opacity-70"
-              />
             </motion.div>
           </div>
         </motion.div>
