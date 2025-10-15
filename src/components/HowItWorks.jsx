@@ -26,7 +26,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#f8fafc] to-white relative overflow-hidden">
+    <section id="plates" className="py-24 bg-gradient-to-b from-[#f8fafc] to-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Title */}
         <motion.h2
@@ -46,12 +46,11 @@ export default function HowItWorks() {
           Getting insured is simple and fast. Follow these four easy steps to protect your vehicle today.
         </motion.p>
 
-        {/* Timeline line */}
-        <div className="relative flex flex-col items-center">
-          {/* Vertical Line in Center */}
-          <div className="absolute w-1 bg-[#0f793c] h-full left-1/2 transform -translate-x-1/2 rounded-full" />
+        {/* Timeline */}
+        <div className="relative flex flex-col items-center md:items-stretch">
+          {/* Vertical Line for Desktop */}
+          <div className="hidden md:block absolute w-1 bg-[#0f793c] h-full left-1/2 transform -translate-x-1/2 rounded-full" />
 
-          {/* Steps */}
           {steps.map((step, i) => (
             <motion.div
               key={i}
@@ -59,35 +58,48 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className={`mb-16 flex flex-col md:flex-row items-center w-full relative ${
+              className={`mb-16 flex flex-col md:flex-row items-center md:items-start w-full relative ${
                 i % 2 === 0 ? "md:justify-start" : "md:justify-end"
               }`}
             >
-              {/* Content */}
+              {/* Mobile Layout (stacked) */}
+              <div className="flex md:hidden items-start gap-4 text-left">
+                <div className="flex flex-col items-center">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-12 h-12 flex items-center justify-center bg-[#002d6b] text-white rounded-full border-4 border-[#0f793c] shadow-lg"
+                  >
+                    {step.icon}
+                  </motion.div>
+                </div>
+                <div>
+                  <motion.h3 whileHover={{ scale: 1.05 }} className="text-xl font-bold text-[#002d6b] mb-2">
+                    {step.title}
+                  </motion.h3>
+                  <p className="text-gray-600 leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+
+              {/* Desktop Layout (split with central line) */}
               <div
-                className={`md:w-1/2 px-6 md:px-10 ${
+                className={`hidden md:block md:w-1/2 px-6 md:px-10 ${
                   i % 2 === 0 ? "text-right" : "text-left"
                 }`}
               >
-                <motion.h3
-                  whileHover={{ scale: 1.05 }}
-                  className="text-xl font-bold text-[#002d6b] mb-2"
-                >
+                <motion.h3 whileHover={{ scale: 1.05 }} className="text-xl font-bold text-[#002d6b] mb-2">
                   {step.title}
                 </motion.h3>
                 <p className="text-gray-600 leading-relaxed">{step.desc}</p>
               </div>
 
-              {/* Icon in center line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+              {/* Icon in Center Line for Desktop */}
+              <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 flex-col items-center">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   className="w-12 h-12 flex items-center justify-center bg-[#002d6b] text-white rounded-full border-4 border-[#0f793c] shadow-lg z-10"
                 >
                   {step.icon}
                 </motion.div>
-
-                {/* Connecting line */}
                 {i !== steps.length - 1 && (
                   <motion.div
                     initial={{ height: 0 }}

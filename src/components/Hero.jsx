@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import hero from "../assets/hero-car.png"
 export default function Hero() {
   return (
-    <section className="pt-32 pb-20 bg-gradient-to-br from-[#003366] via-[#004080] to-[#0F793C] text-white relative overflow-hidden">
+    <section id="home" className="pt-32 pb-20 bg-gradient-to-br from-[#003366] via-[#004080] to-[#0F793C] text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-10 bg-[url('/src/assets/hero-pattern.svg')] bg-cover bg-center"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">

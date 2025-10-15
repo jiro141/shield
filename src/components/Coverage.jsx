@@ -26,7 +26,7 @@ const coverages = [
 
 export default function Coverage() {
   return (
-    <section className="py-28 bg-gradient-to-br from-[#002d6b] to-[#0f793c] text-white relative overflow-hidden">
+    <section id="coverage" className="py-28 bg-gradient-to-br from-[#002d6b] to-[#0f793c] text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         {/* Section Title */}
         <motion.h2

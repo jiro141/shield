@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 import logo from "../assets/logo.png";
+
 export default function Navbar() {
   return (
     <motion.nav
@@ -10,31 +12,41 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img src={logo} alt="PlateShield" className="w-16 h-16" />
-          {/* <span className="text-xl font-semibold">PlateShield</span> */}
+          <a href="#home">
+            <img src={logo} alt="PlateShield" className="w-16 h-16" />
+          </a>
         </div>
+
+        {/* Links */}
         <div className="hidden md:flex gap-8 text-gray-700 font-medium">
-          <a href="#features" className="hover:text-green-600">
-            Features
-          </a>
-          <a href="#coverage" className="hover:text-green-600">
-            Coverage
-          </a>
-          <a href="#plates" className="hover:text-green-600">
-            License Plates
-          </a>
-          <a href="#pricing" className="hover:text-green-600">
-            Pricing
-          </a>
-          <a href="#faq" className="hover:text-green-600">
-            FAQ
-          </a>
+          {[
+            { to: "features", label: "Features" },
+            { to: "coverage", label: "Coverage" },
+            { to: "plates", label: "How It Works" },
+            { to: "pricing", label: "Pricing" },
+            { to: "testimonials", label: "Testimonials" },
+            { to: "faq", label: "FAQ" },
+          ].map((link, i) => (
+            <Link
+              key={i}
+              to={link.to}
+              spy={true}
+              smooth={true}
+              offset={-80}
+              duration={600}
+              className="cursor-pointer hover:text-[#0f793c] transition"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
+
+        {/* Buttons */}
         <div className="flex gap-3">
-          <button className="bg-[#002D6B] text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+          <button className="bg-[#002D6B] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
             Get Quote
           </button>
-          <button className="bg-[#0F793C] text-white px-4 py-2 rounded-lg hover:bg-green-700">
+          <button className="bg-[#0F793C] text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
             Check Out
           </button>
         </div>
