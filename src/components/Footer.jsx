@@ -13,7 +13,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold mb-3">Servitend</h3>
+            <h3 className="text-2xl font-bold mb-3">Plate Shield Insurance</h3>
             <p className="text-gray-200 text-sm leading-relaxed">
               Your safety is our top priority.  
               Protect your journey with confidence and transparency.

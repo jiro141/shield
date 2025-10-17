@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import { useLocation } from "react-router-dom"; // ✅ Importamos hook de ruta
 import logo from "../assets/logo.png";
 
 export default function Navbar({ openLogin, openSearch }) {
+  const location = useLocation(); // ✅ Detecta la ruta actual
+
   return (
     <motion.nav
       initial={{ y: -40, opacity: 0 }}
@@ -12,8 +15,8 @@ export default function Navbar({ openLogin, openSearch }) {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2">
-          <img src={logo} alt="Servitend" className="w-16 h-16" />
+        <a href="/" className="flex items-center gap-2">
+          <img src={logo} alt="PlateShield" className="w-16 h-16" />
         </a>
 
         {/* Links */}
@@ -42,14 +45,17 @@ export default function Navbar({ openLogin, openSearch }) {
 
         {/* Buttons */}
         <div className="flex gap-3">
-          <button
-            onClick={openLogin}
-            className="bg-[#002D6B] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-          >
-            Login
-          </button>
+          {/* ✅ Mostrar botón Login solo en /login */}
+          {location.pathname === "/login" && (
+            <button
+              onClick={openLogin}
+              className="bg-[#002D6B] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              Login
+            </button>
+          )}
 
-          {/* ✅ This opens the search modal */}
+          {/* ✅ Botón de búsqueda siempre visible */}
           <button
             onClick={openSearch}
             className="bg-[#0F793C] text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
