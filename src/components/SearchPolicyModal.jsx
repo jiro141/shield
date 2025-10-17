@@ -29,7 +29,6 @@ export default function SearchPolicyModal({ onClose }) {
       const policy = response.data[0];
       setResult(policy);
 
-      // ✅ Check payment state (link existence)
       if (!policy.link) {
         toast("⚠️ Your policy is ready but pending payment.", {
           icon: "⏳",
@@ -46,7 +45,7 @@ export default function SearchPolicyModal({ onClose }) {
 
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50 p-4"
+      className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50 p-4 sm:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -56,33 +55,37 @@ export default function SearchPolicyModal({ onClose }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 relative"
+        className="bg-white w-full max-w-md sm:max-w-lg rounded-2xl shadow-2xl p-5 sm:p-8 relative overflow-y-auto max-h-[90vh]"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-[#0f793c] transition"
+          className="absolute top-3 right-3 text-gray-500 hover:text-[#0f793c] transition"
+          aria-label="Close modal"
         >
-          <FaTimes size={18} />
+          <FaTimes size={20} />
         </button>
 
-        <h3 className="text-xl font-bold text-[#002d6b] text-center mb-6">
+        <h3 className="text-lg sm:text-2xl font-bold text-[#002d6b] text-center mb-6">
           Search Insurance Policy
         </h3>
 
         {/* Search Form */}
-        <form onSubmit={handleSearch} className="flex gap-2">
+        <form
+          onSubmit={handleSearch}
+          className="flex flex-col sm:flex-row gap-3 sm:gap-2"
+        >
           <input
             type="text"
             placeholder="Enter policy number..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0f793c]"
+            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0f793c] text-sm sm:text-base"
           />
           <button
             type="submit"
             disabled={loading}
-            className="px-4 py-2.5 bg-[#0f793c] text-white rounded-lg hover:bg-[#0d5f2f] transition flex items-center gap-2 font-medium"
+            className="px-4 py-3 bg-[#0f793c] text-white rounded-lg hover:bg-[#0d5f2f] transition flex items-center justify-center gap-2 font-medium text-sm sm:text-base"
           >
             <FaSearch />
             {loading ? "Searching..." : "Search"}
@@ -95,17 +98,17 @@ export default function SearchPolicyModal({ onClose }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mt-6 bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-sm"
+            className="mt-6 bg-gray-50 border border-gray-200 rounded-xl p-4 sm:p-6 shadow-sm"
           >
-            <p className="text-sm text-gray-600 mb-1">
+            <p className="text-sm sm:text-base text-gray-600 mb-1">
               <span className="font-semibold text-[#002d6b]">Insured:</span>{" "}
               {result.nombre_asegurado}
             </p>
-            <p className="text-sm text-gray-600 mb-1">
+            <p className="text-sm sm:text-base text-gray-600 mb-1">
               <span className="font-semibold text-[#002d6b]">Policy #:</span>{" "}
               {result.numero_poliza}
             </p>
-            <p className="text-sm text-gray-600 mb-3">
+            <p className="text-sm sm:text-base text-gray-600 mb-3">
               <span className="font-semibold text-[#002d6b]">VIN:</span>{" "}
               {result.numero_vin}
             </p>
@@ -115,12 +118,12 @@ export default function SearchPolicyModal({ onClose }) {
                 href={result.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-4 py-2 bg-[#0f793c] text-white rounded-lg hover:bg-[#0d5f2f] transition font-medium"
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-[#0f793c] text-white rounded-lg hover:bg-[#0d5f2f] transition font-medium text-sm sm:text-base"
               >
                 <FaFileAlt /> Open Document
               </a>
             ) : (
-              <p className="text-yellow-600 text-sm font-medium text-center mt-2">
+              <p className="text-yellow-600 text-sm sm:text-base font-medium text-center mt-2">
                 ⚠️ Awaiting payment before document is available.
               </p>
             )}
