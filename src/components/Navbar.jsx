@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import logo from "../assets/logo.png";
 
-export default function Navbar({ openLogin }) {  // 👈 recibes la función como prop
+export default function Navbar({ openLogin, openSearch }) {
   return (
     <motion.nav
       initial={{ y: -40, opacity: 0 }}
@@ -42,7 +42,6 @@ export default function Navbar({ openLogin }) {  // 👈 recibes la función com
 
         {/* Buttons */}
         <div className="flex gap-3">
-          {/* 👇 Aquí llamas la función que abre el modal */}
           <button
             onClick={openLogin}
             className="bg-[#002D6B] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
@@ -50,7 +49,11 @@ export default function Navbar({ openLogin }) {  // 👈 recibes la función com
             Login
           </button>
 
-          <button className="bg-[#0F793C] text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+          {/* ✅ This opens the search modal */}
+          <button
+            onClick={openSearch}
+            className="bg-[#0F793C] text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+          >
             Check Out
           </button>
         </div>
