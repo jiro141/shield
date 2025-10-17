@@ -112,6 +112,18 @@ export default function SearchPolicyModal({ onClose }) {
               <span className="font-semibold text-[#002d6b]">VIN:</span>{" "}
               {result.numero_vin}
             </p>
+            <p className="text-sm sm:text-base text-gray-600 mb-3">
+              <span className="font-semibold text-[#002d6b]">Brand:</span>{" "}
+              {result.marca}
+            </p>
+            <p className="text-sm sm:text-base text-gray-600 mb-3">
+              <span className="font-semibold text-[#002d6b]">Model:</span>{" "}
+              {result.modelo}
+            </p>
+            <p className="text-sm sm:text-base text-gray-600 mb-3">
+              <span className="font-semibold text-[#002d6b]">Year:</span>{" "}
+              {result.anio}
+            </p>
 
             {result.link ? (
               <a
