@@ -13,7 +13,7 @@ export default function LoginModal({ onClose, onLoginSuccess }) {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:8000/api/login/", {
+      const res = await axios.post("https://plateshieldinsurance.pythonanywhere.com/api/login/", {
         username,
         password,
       });

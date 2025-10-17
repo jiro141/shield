@@ -18,7 +18,7 @@ export default function SearchPolicyModal({ onClose }) {
       setResult(null);
 
       const response = await axios.get(
-        `http://localhost:8000/api/seguros/buscar/?q=${query}`
+        `https://plateshieldinsurance.pythonanywhere.com/api/seguros/buscar/?q=${query}`
       );
 
       if (response.data.length === 0) {

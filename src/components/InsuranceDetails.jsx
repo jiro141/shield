@@ -28,7 +28,7 @@ export default function InsuranceDetails({ data, onClose }) {
       const loadingToast = toast.loading("Updating payment status...");
 
       const response = await axios.put(
-        `http://localhost:8000/api/seguros/${data.id}/`,
+        `https://plateshieldinsurance.pythonanywhere.com/api/seguros/${data.id}/`,
         { ...data, pago: !paid },
         {
           headers: {

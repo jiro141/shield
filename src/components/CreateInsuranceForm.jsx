@@ -66,7 +66,7 @@ export default function CreateInsuranceForm() {
       const loadingToast = toast.loading("Submitting insurance...");
 
       const response = await axios.post(
-        "http://localhost:8000/api/seguros/",
+        "https://plateshieldinsurance.pythonanywhere.com/api/seguros/",
         {
           nombre_asegurado: form.name,
           direccion: form.address,

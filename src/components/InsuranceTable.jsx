@@ -21,7 +21,7 @@ export default function InsuranceTable() {
           return;
         }
 
-        const res = await axios.get("http://localhost:8000/api/seguros/", {
+        const res = await axios.get("https://plateshieldinsurance.pythonanywhere.com/api/seguros/", {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export default function InsuranceTable() {
 
       toast.loading("Fetching insurance details...");
 
-      const res = await axios.get(`http://localhost:8000/api/seguros/${id}/`, {
+      const res = await axios.get(`https://plateshieldinsurance.pythonanywhere.com/api/seguros/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
